@@ -192,9 +192,17 @@ header img {
 }
 
 .login_footer {
+    position: absolute;
+    top: 92%;
+    width: 100%;
     display: flex;
     flex-direction: row;
-    gap: 10vw;
+    gap: 43vw;
+}
+
+.login_footer-circle-group{
+    border: 2px solid;
+    top: 50%;
 }
 
 .circle-bottom_pink {
@@ -205,18 +213,26 @@ header img {
     border-radius: 50%;
     z-index: 1;
     left: -13vw;
-    bottom: -3vh;
+    bottom: -10vh;
 }
 
 .circle-bottom_blue {
     position: absolute;
-    width: 450px;
+    width: 460px;
     height: 310px;
     background-color: var(--blue-color);
     border-radius: 50%;
-    left: -16vw;
+    left: -15vw;
     z-index: 2;
-    bottom: -30vh;
+    bottom: -35vh;
+}
+
+.login_footer-coyright{
+    bottom: 19rem;
+}
+.login_footer-p{
+    color: var(--white);
+    font-size:small;
 }
 
 /*floating animation*/
