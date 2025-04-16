@@ -23,6 +23,7 @@
     flex-direction: column;
     align-items: center;
     padding-top: 2rem;
+    overflow: hidden;
 }
 
 /* Login Container */
@@ -169,7 +170,7 @@
 .letter {
     position: absolute;
     font-size: 3rem;
-    filter: blur(5px);
+    filter: blur(3px);
     font-weight: bold;
     color: var(--white-color);
     animation-iteration-count: infinite;
