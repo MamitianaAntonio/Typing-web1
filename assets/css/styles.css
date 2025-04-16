@@ -144,7 +144,7 @@ header img {
     padding: 1rem;
     border: 2px solid transparent;
     border-radius: 20px;
-    background: 
+    background:
         linear-gradient(var(--background-color), var(--background-color)) padding-box,
         var(--gradient-blue-pink) border-box;
     background-origin: border-box;
@@ -160,7 +160,7 @@ header img {
     white-space: nowrap;
     border-right: 3px solid var(--pink-color);
     display: inline-block;
-    animation: typing 5s steps(22, end) 1s infinite, blink 0.7s step-end infinite;
+    animation: typing 5s steps(28, end) 1s infinite, blink 0.7s step-end infinite;
 }
 
 @keyframes typing {
@@ -169,7 +169,7 @@ header img {
     }
 
     to {
-        width: 22ch
+        width: 28ch
     }
 }
 
@@ -191,58 +191,135 @@ header img {
     padding-block: 0.6rem;
 }
 
+
+/*Footer section*/
 .login_footer {
     position: absolute;
-    top: 92%;
+    bottom: 0;
     width: 100%;
     display: flex;
     flex-direction: row;
-    gap: 43vw;
+    align-items: center;
+    justify-content: center;
+    bottom: 10px;
 }
 
-.login_footer-circle-group{
-    border: 2px solid;
-    top: 50%;
+.login_footer-coyright {
+    bottom: 10;
 }
 
-.circle-bottom_pink {
-    position: absolute;
-    width: 270px;
-    height: 220px;
-    background-color: var(--pink-color);
-    border-radius: 50%;
-    z-index: 1;
-    left: -13vw;
-    bottom: -10vh;
-}
-
-.circle-bottom_blue {
-    position: absolute;
-    width: 460px;
-    height: 310px;
-    background-color: var(--blue-color);
-    border-radius: 50%;
-    left: -15vw;
-    z-index: 2;
-    bottom: -35vh;
-}
-
-.login_footer-coyright{
-    bottom: 19rem;
-}
-.login_footer-p{
-    color: var(--white);
-    font-size:small;
+.login_footer-p {
+    color: var(--white-color);
+    font-size: 1.2rem;
 }
 
 /*floating animation*/
-.floating-animation {
-    position: absolute;
-    top: 0;
-    width: 100%;
-    height: 100%;
+.floating-circles {
+    position: fixed;
+    z-index: -1;
+    pointer-events: none;
+    isolation: isolate;
 }
 
+.circle {
+    border-radius: 50%;
+    position: absolute;
+    opacity: 0.4;
+    filter: blur(20px);
+    mix-blend-mode: soft-light;
+}
+
+.bottom-left {
+    left: 5px;
+    bottom: 20px;
+}
+
+.bottom-left .circle-1 {
+    width: 300px;
+    height: 400px;  
+    background: linear-gradient(135deg, var(--blue-color) 0%, var(--pink-color) 100%);
+    animation: float-1 12s ease-in-out infinite;
+}
+
+.bottom-left .circle-2 {
+    width: 150px;
+    height: 100px;
+    background: linear-gradient(45deg, var(--pink-color) 0%, var(--blue-color) 100%);
+    left: 80px;
+    bottom: -20px;
+    animation: float-2 8s ease-in-out infinite reverse;
+}
+
+.top-right {
+    right: 40px;
+    top: 20px;
+}
+
+.top-right .circle-3 {
+    width: 400px;
+    height: 150px;
+    background: linear-gradient(45deg, var(--blue-color) 0%, var(--pink-color) 100%);
+    animation: float-3 10s ease-in-out infinite;
+}
+
+.top-right .circle-4 {
+    width: 150px;
+    height: 100px;
+    background: linear-gradient(135deg, var(--pink-color) 0%, var(--blue-color) 100%);
+    right: -10px;
+    top: -40px;
+    animation: float-4 7s ease-in-out infinite alternate;
+}
+
+@keyframes float-1 {
+
+    0%,
+    100% {
+        transform: translate(0, 0);
+    }
+
+    50% {
+        transform: translate(-15px, -25px);
+    }
+}
+
+@keyframes float-2 {
+
+    0%,
+    100% {
+        transform: translate(0, 0);
+    }
+
+    50% {
+        transform: translate(20px, 15px);
+    }
+}
+
+@keyframes float-3 {
+
+    0%,
+    100% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+
+    50% {
+        transform: translate(10px, -15px) rotate(5deg);
+    }
+}
+
+@keyframes float-4 {
+
+    0%,
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    50% {
+        transform: translate(-10px, 10px) scale(1.1);
+    }
+}
+
+/*Animation for letter*/
 .letter {
     position: absolute;
     font-size: 40px;
@@ -251,7 +328,7 @@ header img {
     transform-origin: center;
 }
 
-/* Position de départ unique */
+
 .letter_A {
     top: 10%;
     left: 20%;
@@ -300,7 +377,6 @@ header img {
     animation: moveT 8s infinite ease-in-out;
 }
 
-/* Animations différentes */
 @keyframes moveA {
     0% {
         transform: translate(-40px, 60px) scale(1) rotate(0deg);
