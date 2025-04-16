@@ -6,7 +6,7 @@
     --pink-color: #E574AE;
     --blue-color: #4E9ED6;
     --dark: #32383F;
-    --white: #f1f5f9;
+    --white-color: #f1f5f9;
 
 }
 
@@ -24,6 +24,7 @@ body {
     background-color: var(--background-color);
 }
 
+/*header section*/
 header {
     display: flex;
     justify-content: space-between;
@@ -67,6 +68,7 @@ header img {
     right: -10vw;
 }
 
+/*Hero section*/
 .hero-content {
     display: flex;
     flex-direction: column;
@@ -76,6 +78,8 @@ header img {
     justify-content: center;
     height: fit-content;
     gap: 4rem;
+    position: relative;
+    bottom: 2rem;
 }
 
 .hero-content_login {
@@ -88,37 +92,75 @@ header img {
 
 .hero-content_login-title {
     color: var(--blue-color);
-    font-size: 2.2rem;
+    font-size: 3.8rem;
 }
 
 .hero-content_button-login {
-    width: fit-content;
-    color: var(--white);
-    padding-block: 0.5rem;
-    padding-inline: 1rem;
-    background: transparent;
-    background-image: var(--gradient-blue-pink);
-    border-radius: 5px;
+    position: relative;
+    margin: 0 auto;
+    width: 100px;
+    height: 50px;
+    background: var(--gradient-blue-pink);
+    color: var(--white-color);
+    border: none;
+    padding: 0.5rem;
+    margin-bottom: 2rem;
+    border-radius: 8px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition-duration: 0.4s;
+    -webkit-transition-duration: 0.4s;
+    z-index: 1;
+    overflow: visible;
+}
+
+.hero-content_button-login:after {
+    content: "";
+    position: absolute;
+    border-radius: 8px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: all 0.5s;
+    box-shadow: 0 0 10px 40px var(--white-color);
+    z-index: -1;
+}
+
+.hero-content_button-login:active:after {
+    box-shadow: 0 0 0 0 var(--white-color);
+    opacity: 1;
+    transition: 0s;
 }
 
 .hero-content_dynamic-text {
-    display: flex;
-    width: 20vw;
-    padding-inline: 3rem;
-    padding-block: 0.6rem;
-    border: 4px solid transparent;
-    border-image: var(--gradient-blue-pink) 1;
+    position: relative;
+    bottom: 2rem;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 1rem;
+    border: 2px solid transparent;
+    border-radius: 20px;
+    background: 
+        linear-gradient(var(--background-color), var(--background-color)) padding-box,
+        var(--gradient-blue-pink) border-box;
+    background-origin: border-box;
 }
 
-/* Ajoutez ou remplacez ces styles dans votre fichier CSS */
 .Typing-text {
-    color: var(--white);
+    margin: 0 auto;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--white-color);
     overflow: hidden;
     white-space: nowrap;
     border-right: 3px solid var(--pink-color);
-    width: 0;
     display: inline-block;
-    animation: typing 3s steps(22, end) 1s infinite, blink 0.7s step-end infinite;
+    animation: typing 5s steps(22, end) 1s infinite, blink 0.7s step-end infinite;
 }
 
 @keyframes typing {
@@ -177,6 +219,7 @@ header img {
     bottom: -30vh;
 }
 
+/*floating animation*/
 .floating-animation {
     position: absolute;
     top: 0;
@@ -381,6 +424,7 @@ header img {
         opacity: 1;
     }
 }
+
 @keyframes moveT {
     0% {
         transform: translate(40px, -50px) scale(1) rotate(0deg);
@@ -400,6 +444,7 @@ header img {
         opacity: 1;
     }
 }
+
 @keyframes moveO {
     0% {
         transform: translate(40px, -50px) scale(1) rotate(0deg);
@@ -419,7 +464,3 @@ header img {
         opacity: 1;
     }
 }
-
-
-
-
