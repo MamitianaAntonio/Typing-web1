@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+    --background: #1F2937;
+    --gradient-blue-pink: linear-gradient(45deg, #4E9ED6, #E574AE);
+    --pink-color: #E574AE;
+    --blue-color: #4E9ED6;
+    --white-color: #F1F5F9;
+    --dark: #32383F;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background-color: var(--white-color);
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    background-color: var(--white-color);
+}
+
+.header_title-h1 {
+    font-size: 24px;
+    margin: 0;
+    color: var(--blue-color);
+}
+
+.header_navigation {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    color: var(dark);
+}
+
+.header_navigation i {
+    font-size: 20px;
+    margin-left: 15px;
+    cursor: pointer;
+    color: var(--dark);
+}
+.header_navigation .icons{
+    display: flex;
+    gap: 2rem;
+}
+
+ .header_navigation .icons i{
+    font-size: 22px;
+ }
+ .toggle-label .icon i {
+    width: 100%;
+    height: 100%;
+    font-size: 16px; /* Fixe pour éviter les sauts de taille */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Dark mode toggle */
+#toggle-dark {
+    display: none;
+}
+
+.toggle-label {
+    width: 60px;
+    height: 30px;
+    background: #eee;
+    border-radius: 50px;
+    position: relative;
+    display: block;
+    cursor: pointer;
+    transition: background 0.4s;
+    margin-right: 15px;
+}
+
+.toggle-label .icon {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 22px;
+    height: 22px;
+    background: #111;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 12px; /* légèrement réduit */
+    overflow: hidden;
+    transition: transform 0.4s, background 0.4s;
+    text-align: center;
+    padding: 0;
+}
+
+.toggle-label .icon i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#toggle-dark:checked + .toggle-label {
+    background: var(--background);
+}
+
+#toggle-dark:checked + .toggle-label .icon {
+    transform: translateX(30px);
+    background: var(--white-color);
+    color: var(--background);
+}
+
+/* Dark mode */
+body.dark-mode {
+    background-color: var(--background);
+    color: var(--white-color);
+}
+
+body.dark-mode header {
+    background-color: var(--background);
+}
+
+body.dark-mode .header_navigation i {
+    color: var(--white-color);
+}
