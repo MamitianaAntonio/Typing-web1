@@ -17,8 +17,123 @@
 }
 
 body {
+
     width: 100vw;
     height: 100vh;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    background-color: var(--white-color);
+}
+
+.header_title-h1 {
+    font-size: 24px;
+    margin: 0;
+    color: var(--blue-color);
+}
+
+.header_navigation {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    color: var(dark);
+}
+
+.header_navigation i {
+    font-size: 20px;
+    margin-left: 15px;
+    cursor: pointer;
+    color: var(--dark);
+}
+.header_navigation .icons{
+    display: flex;
+    gap: 2rem;
+}
+
+ .header_navigation .icons i{
+    font-size: 22px;
+ }
+ .toggle-label .icon i {
+    width: 100%;
+    height: 100%;
+    font-size: 16px; /* Fixe pour éviter les sauts de taille */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Dark mode toggle */
+#toggle-dark {
+    display: none;
+}
+
+.toggle-label {
+    width: 60px;
+    height: 30px;
+    background: #eee;
+    border-radius: 50px;
+    position: relative;
+    display: block;
+    cursor: pointer;
+    transition: background 0.4s;
+    margin-right: 15px;
+}
+
+.toggle-label .icon {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 22px;
+    height: 22px;
+    background: #111;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 12px; /* légèrement réduit */
+    overflow: hidden;
+    transition: transform 0.4s, background 0.4s;
+    text-align: center;
+    padding: 0;
+}
+
+.toggle-label .icon i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#toggle-dark:checked + .toggle-label {
+    background: var(--background);
+}
+
+#toggle-dark:checked + .toggle-label .icon {
+    transform: translateX(30px);
+    background: var(--white-color);
+    color: var(--background);
+}
+
+/* Dark mode */
+body.dark-mode {
+    background-color: var(--background);
+    color: var(--white-color);
+}
+
+body.dark-mode header {
+    background-color: var(--background);
+}
+
+body.dark-mode .header_navigation i {
+    color: var(--white-color);
 }
 
 /*typing container*/
@@ -152,4 +267,11 @@ body {
     transition: all 0.3s ease;
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
+}
+
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background-color: var(--white-color);
+    transition: background 0.3s ease, color 0.3s ease;
 }
