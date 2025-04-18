@@ -283,3 +283,23 @@ body.dark-mode .header_navigation i {
     font-size: 1.5rem;
     color: var(--background);
 }
+
+/* typing interface */
+.typing-interface_option {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    margin-right: 15px;
+    top: 3rem;
+}
+
+.typing-interface_option .icon {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 3rem;
+    color: var(--background);
+    transition: ease 0.3s all;
+    overflow: visible;
+}
+
