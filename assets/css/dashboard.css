@@ -24,7 +24,8 @@ body {
     font-family: sans-serif;
     background-color: var(--white-color);
     transition: background 0.3s ease, color 0.3s ease;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 header {
@@ -66,13 +67,9 @@ header {
 }
 
 .toggle-label .icon i {
-    width: 100%;
-    height: 100%;
-    font-size: 16px;
-    /* Fixe pour éviter les sauts de taille */
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
 }
 
 /* Dark mode toggle */
@@ -83,13 +80,14 @@ header {
 .toggle-label {
     width: 60px;
     height: 30px;
-    background: #32383F;
+    background: var(--dark);
     border-radius: 50px;
     position: relative;
     display: block;
     cursor: pointer;
     transition: background 0.4s;
     margin-right: 15px;
+    border: 2px solid black;
 }
 
 .toggle-label .icon {
@@ -133,11 +131,28 @@ header {
     color: var(--white-color);
 }
 
+.toggle-label .icon i {
+    color: var(--dark);
+    transition: color 0.3s ease;
+}
+
+
+
 /* Dark mode */
 body.dark-mode {
     background-color: var(--background);
     color: var(--dark);
 }
+.toggle-label .icon i {
+    transition: opacity 0.3s ease;
+}
+.sun-icon, .moon-icon {
+    transition: opacity 0.3s ease;
+  }  
+  body.dark-mode .toggle-label .icon i {
+    color: var(--white-color);
+}
+
 
 body.dark-mode header {
     background-color: var(--background);
@@ -147,13 +162,223 @@ body.dark-mode .header_navigation i {
     color: var(--white-color);
 }
 
+/* Overlay de flou */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    z-index: 100;
+    display: none;
+}
+
+.overlay.active {
+    display: block;
+}
+
+/* Dropdown menu */
+
+/* Overlay de flou */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    z-index: 100;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.overlay.active {
+    display: block;
+    opacity: 1;
+}
+
+/* Dropdown menu */
+/* Overlay de flou */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    z-index: 100;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.overlay.active {
+    display: block;
+    opacity: 1;
+}
+
+/* Wrapper pour le dropdown */
+.dropdown-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown menu */
+
+.gear-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gear-button:focus {
+    outline: none;
+}
+
+.dropdown-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 10px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    z-index: 101;
+    display: none;
+    min-width: 200px;
+}
+
+.dropdown-menu.active {
+    display: block;
+    width: fit-content;
+}
+
+
+.dropdown-options {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-top: -5px; 
+}
+
+
+.radio-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    padding-left: 0;
+    padding-top: 20px; 
+    cursor: pointer;
+    font-size: 14px;
+    user-select: none;
+    color: var(--background);
+    margin: 0 5px;
+}
+
+.radio-checkmark {
+    position: absolute;
+    top: -2px; 
+    left: 50%;
+    transform: translateX(-50%);
+    height: 18px; 
+    width: 18px; 
+    background-color: #eee;
+    border-radius: 50%;
+    border: 2px solid var(--blue-color);
+}
+.radio-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    padding-left: 0;
+    padding-top: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    user-select: none;
+    color: var(--background);
+    margin: 0 5px;
+}
+
+/* Hide native radio buttons */
+.radio-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* Style for custom radio circle */
+.radio-checkmark {
+    position: absolute;
+    top: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 18px;
+    width: 18px;
+    background-color: #eee;
+    border-radius: 50%;
+    border: 2px solid var(--blue-color);
+}
+
+/* Style for inner circle (dot) */
+.radio-checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--blue-color);
+}
+
+.radio-container input:checked ~ .radio-checkmark:after {
+    display: block;
+}
+
+
+.dropdown-menu {
+    min-width: 240px;
+    padding: 12px 15px; 
+}
+
+.dropdown-menu h4 {
+    color: var(--blue-color);
+    margin-bottom: 10px; 
+    font-size: 18px;
+    text-align: center;
+    font-weight: 600;
+}
+
+
 /*typing container*/
 .typing-interface {
     position: relative;
-    bottom: 5rem;
     width: 80vw;
     margin: 0 auto;
-    height: 100%;
+    height: 90%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -197,8 +422,8 @@ body.dark-mode .header_navigation i {
     border: 2px solid transparent;
     border-radius: 10px;
     background:
-        linear-gradient(var(--dark), var(--dark)) padding-box,
-        var(--gradient-blue-pink) border-box;
+            linear-gradient(#fff, #fff) padding-box,
+            var(--gradient-blue-pink) border-box;
     background-origin: border-box;
     background-clip: content-box, border-box;
 }
@@ -231,6 +456,7 @@ body.dark-mode .header_navigation i {
         0 2px 5px rgba(0, 0, 0, 0.2),
         inset 0 -2px 2px rgba(0, 0, 0, 0.1);
     animation: pulse 1.5s infinite;
+    border: 2px solid var(--dark);
 }
 
 .typing-progress__bar-complete {
@@ -302,4 +528,70 @@ body.dark-mode .header_navigation i {
     transition: ease 0.3s all;
     overflow: visible;
 }
+
+/* Typing section styles en dark mode */
+
+
+body.dark-mode .typing-container {
+    background-color: #0F172A;
+}
+
+body.dark-mode .typing_word-display {
+    color: var(--white-color);
+}
+
+body.dark-mode .typing-progress {
+    background-color: var(--dark);
+    border-color: var(--white-color);
+}
+
+body.dark-mode .result-container_info {
+    color: var(--white-color);
+}
+
+body.dark-mode .typing-status_difficulty,
+body.dark-mode .typing-status_time {
+    color: var(--white-color);
+}
+
+body.dark-mode .typing-interface_option .icon {
+    color: var(--white-color);
+}
+
+body.dark-mode .header_navigation .icon {
+    color: var(--white-color);
+}
+body.dark-mode .typing-container{
+    background:
+            linear-gradient(#0F172A, #0F172A) padding-box,
+            var(--gradient-blue-pink) border-box;
+}
+/* Typing section styles in dark mode */
+
+body.dark-mode .typing_word-display {
+    color: var(--white-color);
+}
+
+body.dark-mode .typing-progress {
+    background-color: var(--dark);
+    border-color: var(--white-color);
+}
+
+body.dark-mode .result-container_info {
+    color: var(--white-color);
+}
+
+body.dark-mode .typing-status_difficulty,
+body.dark-mode .typing-status_time {
+    color: var(--white-color);
+}
+
+body.dark-mode .typing-interface_option .icon {
+    color: var(--white-color);
+}
+
+body.dark-mode .header_navigation .icon {
+    color: var(--white-color);
+}
+
 
