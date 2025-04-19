@@ -150,7 +150,7 @@ body.dark-mode .header_navigation i {
 /*typing container*/
 .typing-interface {
     position: relative;
-    bottom: 5rem;
+    bottom: 1.5rem;
     width: 80vw;
     margin: 0 auto;
     height: 100%;
@@ -201,6 +201,8 @@ body.dark-mode .header_navigation i {
         var(--gradient-blue-pink) border-box;
     background-origin: border-box;
     background-clip: content-box, border-box;
+    overflow: auto;
+    display: flex;
 }
 
 .typing_word-display {
@@ -209,7 +211,48 @@ body.dark-mode .header_navigation i {
     padding: 1rem;
     text-align: justify;
     color: var(--white-color);
+    overflow-wrap: break-word;
+    word-break: break-word;
+    hyphens: auto;
+    text-align: left;
+    flex-grow: 1;
+    overflow-y: auto;
+    margin: 0;
 }
+
+.typing_correct {
+    color: #2ecc71;
+    transform: translateY(0);
+    animation: correctChar 0.3s ease;
+}
+
+@keyframes correctChar {
+    0% {
+        transform: translateY(-5px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.typing_incorrect {
+    color: #e74c3c;
+    animation: shake 0.5s cubic-bezier(.36, .07, .19, .97);
+    text-decoration: underline wavy;
+}
+
+.char {
+    font-family: 'Poppins', sans-serif;
+    display: inline-block;
+    padding: 2px;
+    position: relative;
+    transition: all 0.2s ease;
+    user-select: none;
+}
+
 
 /*typing bar progression*/
 .typing-progress {
@@ -223,7 +266,7 @@ body.dark-mode .header_navigation i {
 }
 
 .typing-progress_bar {
-    width: 100%;
+    width: 0%;
     height: 100%;
     background: linear-gradient(100deg, var(--pink-color), var(--blue-color));
     transition: width 0.5s ease-out;
@@ -261,6 +304,7 @@ body.dark-mode .header_navigation i {
 .result-container {
     display: flex;
     justify-content: space-between;
+    padding-inline: 2rem;
 }
 
 .result-container_item {
@@ -282,4 +326,32 @@ body.dark-mode .header_navigation i {
     font-weight: 600;
     font-size: 1.5rem;
     color: var(--background);
+}
+
+/* typing interface */
+.typing-interface_option {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    top: 3rem;
+}
+
+.typing-interface_option .icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 3rem;
+    color: var(--background);
+    transition: ease 0.3s all;
+    overflow: visible;
+}
+
+.typing-interface_option .icon:hover {
+    color: var(--blue-color);
+    transform: rotate(180deg);
+}
+
+.typing-interface_option .icon:active {
+    transform: scale(0.9) rotate(180deg);
 }
