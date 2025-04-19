@@ -1,0 +1,285 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+    --background: #1F2937;
+    --gradient-blue-pink: linear-gradient(45deg, #4E9ED6, #E574AE);
+    --pink-color: #E574AE;
+    --blue-color: #4E9ED6;
+    --white-color: #F1F5F9;
+    --dark: #32383F;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background-color: var(--white-color);
+    transition: background 0.3s ease, color 0.3s ease;
+    overflow: hidden;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    background-color: var(--white-color);
+}
+
+.header_title-h1 {
+    font-size: 24px;
+    margin: 0;
+    color: var(--blue-color);
+}
+
+.header_navigation {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    color: var(dark);
+}
+
+.header_navigation i {
+    font-size: 20px;
+    margin-left: 15px;
+    cursor: pointer;
+    color: var(--dark);
+}
+
+.header_navigation .icons {
+    display: flex;
+    gap: 2rem;
+}
+
+.header_navigation .icons .icon {
+    color: var(--background);
+    font-size: 1.5rem;
+}
+
+.toggle-label .icon i {
+    width: 100%;
+    height: 100%;
+    font-size: 16px;
+    /* Fixe pour éviter les sauts de taille */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Dark mode toggle */
+#toggle-dark {
+    display: none;
+}
+
+.toggle-label {
+    width: 60px;
+    height: 30px;
+    background: #32383F;
+    border-radius: 50px;
+    position: relative;
+    display: block;
+    cursor: pointer;
+    transition: background 0.4s;
+    margin-right: 15px;
+}
+
+.toggle-label .icon {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 22px;
+    height: 22px;
+    background: var(--background);
+    color: var(--white-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 12px;
+    overflow: hidden;
+    transition: transform 0.4s, background 0.4s;
+    text-align: center;
+    padding: 0;
+}
+
+.toggle-label .icon i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    color: var(--dark);
+}
+
+#toggle-dark:checked+.toggle-label {
+    background: var(--white-color);
+    color: var(--white-color);
+}
+
+#toggle-dark:checked+.toggle-label .icon {
+    transform: translateX(30px);
+    background: var(--dark);
+    color: var(--white-color);
+}
+
+/* Dark mode */
+body.dark-mode {
+    background-color: var(--background);
+    color: var(--dark);
+}
+
+body.dark-mode header {
+    background-color: var(--background);
+}
+
+body.dark-mode .header_navigation i {
+    color: var(--white-color);
+}
+
+/*typing container*/
+.typing-interface {
+    position: relative;
+    bottom: 5rem;
+    width: 80vw;
+    margin: 0 auto;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.typing_logo-image {
+    width: 90px;
+    margin: 0 auto;
+    margin-bottom: -2rem;
+}
+
+/*Status*/
+.typing-status {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-block: 0.5rem;
+}
+
+.typing-status_difficulty {
+    font-weight: 600;
+    font-size: 1.7rem;
+    color: var(--blue-color);
+}
+
+.typing-status_time {
+    font-weight: 600;
+    font-size: 1.7rem;
+    color: var(--blue-color);
+}
+
+/*typing container : where we test to tape*/
+.typing-container {
+    width: 100%;
+    max-width: 80vw;
+    height: 34vh;
+    padding-bottom: 2rem;
+    padding: 0.1rem;
+    text-align: center;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    background:
+        linear-gradient(var(--dark), var(--dark)) padding-box,
+        var(--gradient-blue-pink) border-box;
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+}
+
+.typing_word-display {
+    font-size: 1.7rem;
+    font-weight: 400;
+    padding: 1rem;
+    text-align: justify;
+    color: var(--white-color);
+}
+
+/*typing bar progression*/
+.typing-progress {
+    width: 100%;
+    height: 20px;
+    background-color: var(--white-color);
+    border-radius: 2px;
+    border: 3px solid var(--white-color);
+    overflow: hidden;
+    margin: 20px auto;
+}
+
+.typing-progress_bar {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(100deg, var(--pink-color), var(--blue-color));
+    transition: width 0.5s ease-out;
+    box-shadow:
+        0 2px 5px rgba(0, 0, 0, 0.2),
+        inset 0 -2px 2px rgba(0, 0, 0, 0.1);
+    animation: pulse 1.5s infinite;
+}
+
+.typing-progress__bar-complete {
+    width: 100%;
+    background: linear-gradient(90deg, var(--blue-color), var(--pink-color), var(--blue-color));
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+
+    30% {
+        opacity: 0.6;
+    }
+
+    60% {
+        opacity: 0.8;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+/*typing result*/
+.result-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.result-container_item {
+    display: inherit;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.result-container_item .icon {
+    font-size: 1.7rem;
+    width: 1.7em;
+    text-align: center;
+    color: var(--blue-color);
+    transition: all 0.3s ease;
+}
+
+.result-container_info {
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: var(--background);
+}
