@@ -11,6 +11,7 @@ const accuracyResult = document.getElementById("accuracy");
 const progressBar = document.getElementById("progress-bar");
 const difficult = document.getElementById("difficulty-ui");
 const timeResult = document.getElementById("time");
+const timer = document.getElementById("timer");
 
 let startTime = null;
 let endTime = null;
@@ -24,6 +25,10 @@ const initTest = (wordCount = 30) => {
     startTime = null;
     correctChars = 0;
     totalChars = 0;
+
+    progressBar.classList.remove("typing-progress__bar-complete");
+    progressBar.style.width = '0%';
+
 
     const wordsToType = [];
     for (let i = 0; i < wordCount; i++) {
@@ -74,6 +79,9 @@ const updateTypingState = () => {
         }
     });
 
+    const progress = (currentTyped.length / fullText.length) * 100;
+    progressBar.style.width = `${progress}%`;
+
     if (currentTyped.length === fullText.length) {
         endTime = Date.now();
         const { wpm, accuracy, minutes } = calculateStats();
@@ -81,8 +89,10 @@ const updateTypingState = () => {
 
         wpmResult.innerHTML = wpm;
         accuracyResult.innerHTML = `${accuracy} %`;
-        timeResult.innerHTML = minutesFixed;
+        timeResult.innerHTML = `${minutesFixed} min`;
+        progressBar.classList.add("typing-progress__bar-complete");
         document.body.classList.remove('typing-active');
+
         return
     }
 };
@@ -104,7 +114,11 @@ const calculateStats = () => {
 
 document.addEventListener('keydown', (e) => {
     if (fullText.length === 0) return;
-    if (!startTime) startTime = Date.now();
+    if (!startTime) {
+        startTime = Date.now();
+        timeLeft = getSelectedTimeInSeconds();
+        startCountdown();
+    }
 
     if (e.key === 'Backspace') {
         currentTyped = currentTyped.slice(0, -1);
