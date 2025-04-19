@@ -33,6 +33,11 @@
 
             <!-- Other icons -->
             <div class="icons">
+                <select id="mode">
+                    <option value="easy">Easy</option>
+                    <option value="medium">Medium</option>
+                    <option value="hard">Hard</option>
+                </select>
                 <i class="fas fa-gear icon"></i>
                 <i class="fas fa-right-from-bracket icon"></i>
             </div>
@@ -44,45 +49,42 @@
         <img src="assets/images/logo.png" alt="logo image" class="typing_logo-image">
 
         <div class="typing-status">
-            <p class="typing-status_difficulty">Difficulty : Easy</p>
+            <p class="typing-status_difficulty">Difficulty : <span id="difficulty-ui"></span></p>
             <p class="typing-status_time">Time : 01:30 </p>
         </div>
 
         <!-- typing container -->
         <div class="typing-container">
-            <p class="typing_word-display">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Excepturi corrupti quidem soluta iusto ipsam
-                ducimus nobis ipsum nihil. Accusantium eius dicta atque facere laborum quis suscipit nam molestiae nobis
-                quaerat.
-                Dolore facere labore quos aspernatur iure laborum est sint minima soluta voluptas optio ut
-                necessitatibus laboriosam, odit quae vitae asperiores. Voluptatem eum esse aut sed, voluptates mollitia
-                rerum repellendus inventore. rerum repellendus inventore. rerum repellendus inventore.
-            </p>
+            <p class="typing_word-display" id="word-display"></p>
         </div>
 
         <!-- typing bar progression -->
         <div class="typing-progress">
-            <div class="typing-progress_bar"></div>
+            <div class="typing-progress_bar" id="progress-bar"></div>
         </div>
 
         <!-- result after do test -->
         <div class="result-container">
             <div class="result-container_item">
                 <i class="fas fa-bolt icon"></i>
-                <p class="result-container_info">WPM : <span>20</span></p>
+                <p class="result-container_info">WPM : <span id="wpm"></span></p>
             </div>
 
             <div class="result-container_item">
                 <i class="fas fa-bullseye icon"></i>
-                <p class="result-container_info">Accuracy : <span>100%</span></p>
+                <p class="result-container_info">Accuracy : <span id="accuracy"></span></p>
             </div>
 
             <div class="result-container_item">
                 <i class="fas fa-stopwatch icon"></i>
-                <p class="result-container_info">Time : <span>30s</span></p>
+                <p class="result-container_info">Time : <span id="time"></span></p>
             </div>
         </div>
 
+        <!-- typing options -->
+        <div class="typing-interface_option">
+            <i class="fas fa-clock-rotate-left icon" id="restart-icon" onclick="location.reload()"></i>
+        </div>
 
     </section>
 
